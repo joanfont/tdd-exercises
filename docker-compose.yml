@@ -1,0 +1,24 @@
+php: &php
+  image: library/php:7.0.11-cli
+  working_dir: /code
+  volumes:
+    - ./:/code
+  environment:
+    - "TZ=Europe/Madrid"
+    - "HOME=/code"
+    - "MEMORY_LIMIT=2048M"
+  entrypoint: ["php"]
+  command: []
+
+psysh:
+  <<: *php
+  entrypoint: ["php", "vendor/bin/psysh"]
+
+composer:
+  <<: *php
+  entrypoint: ["php", "vendor/bin/composer"]
+
+phpunit:
+  <<: *php
+  entrypoint: ["php", "vendor/bin/phpunit"]
+

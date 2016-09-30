@@ -1,0 +1,4 @@
+vendor
+composer.lock
+.composer
+!vendor/bin/composer
