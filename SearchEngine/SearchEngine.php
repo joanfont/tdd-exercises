@@ -1,6 +1,8 @@
 <?php
 namespace SearchEngine;
 
+use SearchEngine\Entities\User;
+
 class SearchEngine
 {
   /**
@@ -22,11 +24,9 @@ class SearchEngine
 
     $profileFilteredUsers = [];
     if ($locationFilteredUsers) {
-      foreach ($locationFilteredUsers as $locationFilteredUser) {
-        if (in_array($query, $locationFilteredUser->profile)) {
-          $profileFilteredUsers[] = $locationFilteredUser;
-        }
-      }
+      $profileFilteredUsers = array_filter($locationFilteredUsers, function (User $user) use ($query) {
+        return in_array($query, $user->profile);
+      });
     }
 
     return $profileFilteredUsers;
