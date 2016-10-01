@@ -1,6 +1,11 @@
 <?php
 namespace SearchEngine\Test;
+
 use PHPUnit\Framework\TestCase;
+
+use SearchEngine\Entities\User;
+use SearchEngine\UserRepository;
+use SearchEngine\SearchEngine;
 
 class SearchEngineTest extends TestCase
 {
